@@ -1,0 +1,820 @@
+<wsdl:definitions xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://recharge/server" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://recharge/server" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://recharge/server">
+
+	<wsdl:types>
+
+		<schema targetNamespace="http://recharge/server" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" elementFormDefault="qualified">
+
+			<element name="ModifyCardAct">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="SequenceList" nillable="true" type="xsd:string"/>
+
+						<element name="OperationType" nillable="true" type="xsd:string"/>
+
+						<element name="Reason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="OperatorID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="ModifyCardActResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+						<element name="Total" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SuccessNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="FailNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SkipNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SccessFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="FailFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SkipFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="ModifyCardLock">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="SequenceList" nillable="true" type="xsd:string"/>
+
+						<element name="OperationType" nillable="true" type="xsd:string"/>
+
+						<element name="Reason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="OperatorID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="ModifyCardLockResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+						<element name="Total" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SuccessNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="FailNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SkipNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="InexistNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SccessFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="FailFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="SkipFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="CheckPartPIN">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="Sequence" nillable="true" type="xsd:string"/>
+
+						<element name="CardPartPIN" nillable="true" type="xsd:string"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="CheckPartPINResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="ResultCode" type="xsd:int"/>
+
+						<element name="AccountPinNumber" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="HotCardFlag" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="GetTaskID">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="TotalNumber" type="xsd:int"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="GetTaskIDResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+						<element name="TaskID" nillable="true" type="xsd:string"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="QueryTask">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="TaskID" nillable="true" type="xsd:string"/>
+
+						<element name="TenantID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="OperatorID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="QueryTaskResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+						<element name="TaskID" nillable="true" type="xsd:string"/>
+
+						<element name="TaskType" type="xsd:int"/>
+
+						<element name="CreateTime" nillable="true" type="xsd:string"/>
+
+						<element name="StartUpTime" nillable="true" type="xsd:string"/>
+
+						<element name="DealTime" nillable="true" type="xsd:string"/>
+
+						<element name="DealEndTime" nillable="true" type="xsd:string"/>
+
+						<element name="TaskStatus" type="xsd:int"/>
+
+						<element name="BatchNo" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="StartSequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="StopSequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="VCID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="DeactivationReason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="RandomListFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="LockReason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="FailFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="FailNum" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+
+						<element name="SkipFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="SkipNum" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+
+						<element name="SuccessFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="SuccessNum" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+
+						<element name="Total" type="xsd:int" minOccurs="0" maxOccurs="1"/>
+
+						<element name="CardmakingFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="FaceValue" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="Cardmanufacturer" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="CardInformationFile" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="CustomizeTask">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="TaskID" nillable="true" type="xsd:string"/>
+
+						<element name="TaskType" type="xsd:int"/>
+
+						<element name="StartUpTime" nillable="true" type="xsd:string"/>
+
+						<element name="TenantID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="OperatorID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="1"/>
+
+						<element name="NotifyFlag" type="xsd:int"/>
+
+						<element name="Task-Parameters" nillable="true" type="impl:Task-ParametersItem" minOccurs="0" maxOccurs="10"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="CustomizeTaskResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="QueryRechargeCard">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="Sequence" nillable="true" type="xsd:string"/>
+
+						<element name="OperatorID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<element name="QueryRechargeCardResponse">
+
+				<complexType>
+
+					<sequence>
+
+						<element name="RetCode" type="xsd:int"/>
+
+						<element name="BatchNo" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="Sequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="FaceValue" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="Currency" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="CardStartDate" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="CardStopDate" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="HotCardFlag" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="TopDistributor" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="CurDistributor" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="TradeTime" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="RechargeNumber" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="CardCosID" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="CardCosName" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="ResNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+						<element name="Res-Itemgroup" nillable="true" type="impl:Res-ItemgroupItem" minOccurs="0" maxOccurs="unbounded"/>
+
+					</sequence>
+
+				</complexType>
+
+			</element>
+
+			<complexType name="ResInfo">
+
+				<sequence>
+
+					<element name="ResId" type="xsd:int"/>
+
+					<element name="ResLeft" type="xsd:int"/>
+
+					<element name="ResActivedays" type="xsd:int"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="BonusRes">
+
+				<sequence>
+
+					<element name="BonusResId" type="xsd:int"/>
+
+					<element name="BonusResAmt" type="xsd:int"/>
+
+					<element name="BonusResActDays" type="xsd:int"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="ResPreUsed">
+
+				<sequence>
+
+					<element name="ResPreUsedValue1" type="xsd:int"/>
+
+					<element name="RPreUsedActDay1" type="xsd:int"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="Task-ParametersItem">
+
+				<sequence>
+
+					<element name="BatchNo" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="StartSequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="StopSequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="DeactivateReason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="LockReason" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="NewStopDate" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="Res-ItemgroupItem">
+
+				<sequence>
+
+					<element name="ResId" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="ResLeft" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="ResActivedays" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="Record-ItemgroupItem">
+
+				<sequence>
+
+					<element name="BatchNo" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="Sequence" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="FaceValue" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="ErrorType" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CurrencyType" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CardBrandID" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CardStartDate" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CardStopDate" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="TopDistributor" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CurDistributor" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="RechargeNumber" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CallingNumber" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="TradeTime" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="CardCosID" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="TradeType" nillable="true" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="Taxamt" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="Amercement" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="ResNum" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+
+					<element name="Res-Itemgroup" nillable="true" type="impl:Res-ItemgroupItem" minOccurs="0" maxOccurs="unbounded"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="Operation-ItemGroupItem">
+
+				<sequence>
+
+					<element name="StartSequence" nillable="true" type="xsd:string"/>
+
+					<element name="StopSequence" nillable="true" type="xsd:string"/>
+
+					<element name="Operator" nillable="true" type="xsd:string"/>
+
+					<element name="OperationTime" nillable="true" type="xsd:string"/>
+
+					<element name="CardTotal" type="xsd:int"/>
+
+					<element name="OperationType" nillable="true" type="xsd:string"/>
+
+					<element name="OperationMode" type="xsd:int"/>
+
+					<element name="TaskID" nillable="true" type="xsd:string"/>
+
+					<element name="SuccessTotal" type="xsd:int"/>
+
+					<element name="BatchNo" nillable="true" type="xsd:string"/>
+
+					<element name="Desc" nillable="true" type="xsd:string"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="AccountInfo">
+
+				<sequence>
+
+					<element name="AccountID" nillable="true" type="xsd:string"/>
+
+					<element name="AccountType" type="xsd:int"/>
+
+					<element name="AccountValue" type="xsd:int"/>
+
+					<element name="CurrencyCode" type="xsd:int"/>
+
+					<element name="AccountDate" nillable="true" type="xsd:string"/>
+
+				</sequence>
+
+			</complexType>
+
+			<complexType name="BonusInfo">
+
+				<sequence>
+
+					<element name="BonusID" nillable="true" type="xsd:string"/>
+
+					<element name="BonusValue" type="xsd:int"/>
+
+				</sequence>
+
+			</complexType>
+
+		</schema>
+
+	</wsdl:types>
+
+	<wsdl:message name="QueryRechargeCardResponse">
+
+		<wsdl:part name="QueryRechargeCardReply" element="tns1:QueryRechargeCardResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="QueryRechargeCardRequest">
+
+		<wsdl:part name="tns1:QueryRechargeCardRequest" element="tns1:QueryRechargeCard"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="ModifyCardActResponse">
+
+		<wsdl:part name="ModifyCardActReply" element="tns1:ModifyCardActResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="ModifyCardActRequest">
+
+		<wsdl:part name="tns1:ModifyCardActRequest" element="tns1:ModifyCardAct"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="ModifyCardLockResponse">
+
+		<wsdl:part name="ModifyCardLockReply" element="tns1:ModifyCardLockResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="ModifyCardLockRequest">
+
+		<wsdl:part name="tns1:ModifyCardLockRequest" element="tns1:ModifyCardLock"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="CheckPartPINResponse">
+
+		<wsdl:part name="CheckPartPINReply" element="tns1:CheckPartPINResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="CheckPartPINRequest">
+
+		<wsdl:part name="tns1:CheckPartPINRequest" element="tns1:CheckPartPIN"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="CustomizeTaskResponse">
+
+		<wsdl:part name="CustomizeTaskReply" element="tns1:CustomizeTaskResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="CustomizeTaskRequest">
+
+		<wsdl:part name="tns1:CustomizeTaskRequest" element="tns1:CustomizeTask"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="GetTaskIDResponse">
+
+		<wsdl:part name="GetTaskIDReply" element="tns1:GetTaskIDResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="GetTaskIDRequest">
+
+		<wsdl:part name="tns1:GetTaskIDRequest" element="tns1:GetTaskID"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="QueryTaskResponse">
+
+		<wsdl:part name="QueryTaskReply" element="tns1:QueryTaskResponse"/>
+
+	</wsdl:message>
+
+	<wsdl:message name="QueryTaskRequest">
+
+		<wsdl:part name="tns1:QueryTaskRequest" element="tns1:QueryTask"/>
+
+	</wsdl:message>
+
+	<wsdl:portType name="UvcSoapForRecharge">
+
+		<wsdl:operation name="QueryRechargeCard">
+
+			<wsdl:input message="impl:QueryRechargeCardRequest"/>
+
+			<wsdl:output message="impl:QueryRechargeCardResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="ModifyCardAct">
+
+			<wsdl:input message="impl:ModifyCardActRequest"/>
+
+			<wsdl:output message="impl:ModifyCardActResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="ModifyCardLock">
+
+			<wsdl:input message="impl:ModifyCardLockRequest"/>
+
+			<wsdl:output message="impl:ModifyCardLockResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="CheckPartPIN">
+
+			<wsdl:input message="impl:CheckPartPINRequest"/>
+
+			<wsdl:output message="impl:CheckPartPINResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="CustomizeTask">
+
+			<wsdl:input message="impl:CustomizeTaskRequest"/>
+
+			<wsdl:output message="impl:CustomizeTaskResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="GetTaskID">
+
+			<wsdl:input message="impl:GetTaskIDRequest"/>
+
+			<wsdl:output message="impl:GetTaskIDResponse"/>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="QueryTask">
+
+			<wsdl:input message="impl:QueryTaskRequest"/>
+
+			<wsdl:output message="impl:QueryTaskResponse"/>
+
+		</wsdl:operation>
+
+	</wsdl:portType>
+
+	<wsdl:binding name="uvcSoapBinding" type="impl:UvcSoapForRecharge">
+
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+		<wsdl:operation name="QueryRechargeCard">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/QueryRechargeCard" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="ModifyCardAct">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/ModifyCardAct" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="ModifyCardLock">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/ModifyCardLock" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="CheckPartPIN">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/CheckPartPIN" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="CustomizeTask">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/CustomizeTask" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="QueryTask">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/QueryTask" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+		<wsdl:operation name="GetTaskID">
+
+			<wsdlsoap:operation soapAction="http://recharge/server/UvcSoapForRecharge/GetTaskID" style="document"/>
+
+			<wsdl:input>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:input>
+
+			<wsdl:output>
+
+				<wsdlsoap:body use="literal"/>
+
+			</wsdl:output>
+
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+	<wsdl:service name="UvcSoapForRechargeService">
+
+		<wsdl:port name="recharge" binding="impl:uvcSoapBinding">
+			<wsdlsoap:address location="http://10.12.18.217:2812/uvc/services/UvcSoapForRecharge"/>
+                 </wsdl:port>
+
+	</wsdl:service>
+
+</wsdl:definitions>
+
